@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Жабы: толстые и прекрасные</title>
+  <meta name="description" content="Сайт про жаб: 3D-жаба, которую можно крутить, карусель и галерея красивых фото">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐸</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Перейти к содержимому</a>
+
+  <canvas id="fireflies" aria-hidden="true"></canvas>
+  <div class="blobs" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="nav">
+    <a href="#top" class="logo">жаба<span>.</span></a>
+    <nav aria-label="Основная навигация">
+      <a href="#carousel">Карусель</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#facts">Факты</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-text">
+        <p class="eyebrow reveal">🐸 Ква-ква</p>
+        <h1 class="reveal">Жабы. <span class="grad">Толстые.</span> Прекрасные.</h1>
+        <p class="lead reveal">Знакомься, это главная жаба сайта. Крути её мышкой или пальцем, приближай колёсиком. А если ткнуть в неё, она подпрыгнет и квакнет.</p>
+        <div class="actions reveal">
+          <a href="#gallery" class="btn btn-primary magnetic">Смотреть жаб</a>
+          <a href="#carousel" class="btn btn-ghost">Покрутить фото</a>
+        </div>
+      </div>
+
+      <div class="stage reveal" id="stage">
+        <div class="stage-view">
+          <canvas id="toad3d" role="img" aria-label="3D-модель толстой жабы на листе кувшинки"></canvas>
+          <div class="bubble" id="bubble" aria-hidden="true">КВА!</div>
+        </div>
+        <div class="stage-controls">
+          <button type="button" class="ctrl" id="rot-left" aria-label="Повернуть жабу влево">⟲</button>
+          <button type="button" class="ctrl ctrl-main" id="croak">Ква!</button>
+          <button type="button" class="ctrl" id="rot-right" aria-label="Повернуть жабу вправо">⟳</button>
+        </div>
+        <p class="hint">Тяни, чтобы вращать · колёсико для зума · клик по жабе, чтобы квакнуть</p>
+        <p class="no-webgl" id="no-webgl" hidden>Браузер не поддерживает WebGL, поэтому 3D-жаба спит. Зато фото ниже на месте.</p>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Ква</span><span>✦</span><span>Жабы</span><span>✦</span><span>Толстые</span><span>✦</span><span>Прекрасные</span><span>✦</span>
+        <span>Ква</span><span>✦</span><span>Жабы</span><span>✦</span><span>Толстые</span><span>✦</span><span>Прекрасные</span><span>✦</span>
+      </div>
+    </div>
+
+    <section class="section" id="carousel">
+      <h2 class="reveal">Жабья карусель</h2>
+      <p class="sub reveal">Тяни влево-вправо, чтобы крутить. Клик по фото откроет его крупно.</p>
+      <div class="ring-wrap reveal" id="ring-wrap">
+        <div class="ring" id="ring"></div>
+      </div>
+      <div class="ring-nav">
+        <button type="button" class="ctrl" id="ring-prev" aria-label="Предыдущее фото">‹</button>
+        <button type="button" class="ctrl" id="ring-next" aria-label="Следующее фото">›</button>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <h2 class="reveal">Галерея</h2>
+      <div class="masonry" id="masonry"></div>
+    </section>
+
+    <section class="section" id="facts">
+      <h2 class="reveal">Жабьи факты</h2>
+      <div class="grid">
+        <article class="card tilt reveal">
+          <div class="icon" aria-hidden="true">🙅</div>
+          <h3>Бородавок не будет</h3>
+          <p>Бородавки у людей вызывает вирус папилломы. А жабьи «бородавки» это просто кожные железы.</p>
+        </article>
+        <article class="card tilt reveal">
+          <div class="icon" aria-hidden="true">👀</div>
+          <h3>Глотают глазами</h3>
+          <p>Моргая, жаба втягивает глаза внутрь головы, и они помогают протолкнуть еду в горло.</p>
+        </article>
+        <article class="card tilt reveal">
+          <div class="icon" aria-hidden="true">🧥</div>
+          <h3>Едят свою кожу</h3>
+          <p>Во время линьки жаба стягивает старую кожу и тут же её съедает. Ничего не пропадает.</p>
+        </article>
+        <article class="card tilt reveal">
+          <div class="icon" aria-hidden="true">🏋️</div>
+          <h3>Жабзилла</h3>
+          <p>В 2023 году в Австралии нашли жабу-агу весом 2,7 кг. Её прозвали Toadzilla.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="stats">
+      <h2 class="reveal">В цифрах</h2>
+      <div class="stats">
+        <div class="stat reveal"><span class="num" data-count="7500">0</span><span class="unit">+</span><p>видов бесхвостых амфибий</p></div>
+        <div class="stat reveal"><span class="num" data-count="2.7" data-decimals="1">0</span><span class="unit">кг</span><p>весила Жабзилла</p></div>
+        <div class="stat reveal"><span class="num" id="photo-count" data-count="0">0</span><p>фото жаб на сайте</p></div>
+        <div class="stat reveal"><span class="num" data-count="1">0</span><p>толстая 3D-жаба</p></div>
+      </div>
+    </section>
+
+    <section class="section credits" id="credits">
+      <details class="reveal">
+        <summary>Авторы фото</summary>
+        <p>Все фото взяты с Wikimedia Commons под свободными лицензиями. Спасибо авторам.</p>
+        <ol id="credits-list"></ol>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> жаба. Сделано с любовью к жабам 🐸</p>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Просмотр фото">
+    <button type="button" class="ctrl lb-close" id="lb-close" aria-label="Закрыть">✕</button>
+    <button type="button" class="ctrl lb-btn" id="lb-prev" aria-label="Предыдущее фото">‹</button>
+    <figure class="lb-fig">
+      <img id="lb-img" src="" alt="">
+      <figcaption class="lb-cap" id="lb-cap"></figcaption>
+    </figure>
+    <button type="button" class="ctrl lb-btn" id="lb-next" aria-label="Следующее фото">›</button>
+  </dialog>
+
+  <script src="vendor/three.min.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
